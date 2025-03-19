@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="logo.png" alt="Company Logo">
+    </div>
+
+    <div class="container">
+        <h2>Visa Application</h2>
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="text" id="passport" placeholder="Enter your passport number">
+        <select id="country">
+            <option value="">Select a Country</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="India">India</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+        </select>
+        <button id="applyVisa">Apply for Visa</button>
+        <p id="applicationResult"></p>
+    </div>
+
+    <script>
+        document.getElementById("applyVisa").addEventListener("click", function() {
+            let name = document.getElementById("name").value.trim();
+            let passport = document.getElementById("passport").value.trim();
+            let country = document.getElementById("country").value;
+            let result = document.getElementById("applicationResult");
+
+            if (!name || !passport || !country) {
+                result.innerText = "All fields are required!";
+                result.classList.add("bounce");
+            } else if (passport.length < 8 || passport.length > 10) {
+                result.innerText = "Invalid passport number!";
+                result.classList.add("bounce");
+            } else {
+                result.innerText = "Visa application submitted successfully!";
+                result.classList.add("bounce");
+            }
+
+            setTimeout(() => result.classList.remove("bounce"), 500);
+        });
+    </script>
+
+</body>
+</html>
